@@ -1,11 +1,9 @@
-import telebot;
+import telebot
 from telebot import types
 from app import database as db
-# from setting import TG_TOKEN
-# import os
+from config import TOKEN
 
-# token = os.getenv("TOKEN")
-bot = telebot.TeleBot('5866264930:AAFmDI5lRH38gO3oDndaB-aeFAsEoCRxzxs')
+bot = telebot.TeleBot(TOKEN)
 
 
 @bot.message_handler(commands=['start'])
@@ -46,7 +44,7 @@ def choice(message):
      lesson1 = types.KeyboardButton('Математика')
      lesson2 = types.KeyboardButton('Информатика')
      lesson3 = types.KeyboardButton('Химия')
-     lesson4 = types.KeyboardButton('Биология')     
+     lesson4 = types.KeyboardButton('Биология')
      markup.add(lesson1, lesson2, lesson3, lesson4)
      bot.send_message(message.chat.id, 'Теперь вам нужно выбрать предметы по которым вы готовы работать!', reply_markup=markup)
 
@@ -80,8 +78,5 @@ def choice(message):
 #     markup_inline.add(button, button1, button2, button3, button4, button5, button6, button7, button8, button9, button10)
 #     bot.send_message(message.chat.id, 'Выберите класс',reply_markup=markup_inline)
 
-
-bot.polling(none_stop=True)
-
-# if __name__ == '__main__':
-#     bot.polling(none_stop=True)
+if __name__ == '__main__':
+    bot.polling(none_stop=True)
