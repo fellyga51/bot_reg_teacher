@@ -1,8 +1,8 @@
 import sqlite3
 
-s = "`subject`"
-ta = "`task`"
-te = "`teacher`"
+s = "subject"
+ta = "task"
+te = "teacher"
 
 class Database:
     def __init__(self): # подключение к БД
@@ -11,7 +11,7 @@ class Database:
 
     def check_teacher(self, tg_id): # проверка наличия преподователя в БД
         with self.connection:
-            res = self.cursor.execute("SELECT (tg_id) FROM `teacher` WHERE tg_id = ?", (tg_id,))
+            res = self.cursor.execute(f"SELECT (tg_id) FROM {te} WHERE tg_id = ?", (tg_id,))
             return res.fetchone() is not None
     
     # Тут просто объединил все запросы в один для заполнения всех полей сразу

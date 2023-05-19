@@ -74,7 +74,7 @@ async def process_grade(message: types.Message, state: FSMContext):
         await message.answer('Вы зарегистрированы как ' + data['fullname'] + "\nВыбранный предмет - " + data['subject'] + "\nКласс - " + data["grade"], reply_markup=markup)
     await state.finish()
 
-@dispatcher.message_handler(content_types=["text"])
+@dispatcher.message_handler(content_types=types.ContentTypes.TEXT)
 async def bot_message(message: types.Message):
 
     if message.text == "Зарегистироваться":
